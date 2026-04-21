@@ -1,0 +1,39 @@
+[Unit]
+Description=rclone-over-autossh rclone sftp service
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/rclone-over-autossh/service.conf
+
+# 基础命令配置
+ExecStart=/usr/bin/rclone serve sftp $RClonePath \
+  --addr $LocalAddress
+  --user $RCloneUser \
+  --pass $RClonePass \
+  --dir-perms $RCloneDirPerms \
+  --file-perms $RCloneFilePerms \
+  --vfs-cache-mode writes
+
+# 自动重启配置
+Restart=always
+RestartSec=10
+StartLimitInterval=0
+StartLimitBurst=0
+
+# 安全加固
+User=$User
+Group=$Group
+PrivateTmp=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=$RClonePath
+ReadWritePaths=/var/log/rclone-over-autossh
+
+# 日志输出
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=rclone-over-autossh
+
+[Install]
+WantedBy=multi-user.target
