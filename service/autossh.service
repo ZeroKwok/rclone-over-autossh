@@ -13,7 +13,7 @@ ExecStart=/usr/bin/autossh -M 0 \
     -o "StrictHostKeyChecking no" \
     -o "UserKnownHosts /dev/null" \
     -NT \
-    -i /etc/rclone-over-autossh/id_rsa \
+    -i /etc/rclone-over-autossh/ssh_key \
     -R $RemoteAddress:$LocalAddress \
     $RemoteHostSpec
 

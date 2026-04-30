@@ -1,0 +1,16 @@
+LocalAddress=127.0.0.1:2026
+RemoteAddress=127.0.0.1:2026
+RemoteHostSpec=<user>@<host>
+User=shared
+Group=shared
+
+AUTOSSH_GATETIME=0
+AUTOSSH_POLL=10
+AUTOSSH_FIRST_POLL=30
+AUTOSSH_LOGLEVEL=1
+
+RCloneUser=shared
+RClonePass=<password>
+RClonePath=/shared
+RCloneDirPerms=0755
+RCloneFilePerms=0644
