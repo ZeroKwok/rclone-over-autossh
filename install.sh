@@ -25,19 +25,9 @@ for cmd in rclone autossh; do
     fi
 done
 
-# Check configuration directory
-if [ ! -d ./etc/rclone-over-autossh ]; then
-    error "Please provide rclone-over-autossh configuration directory"
-    exit 1
-fi
-
-# Copy main configuration file
-cp ./etc/rclone-over-autossh.conf.template /etc/rclone-over-autossh/service.conf
-info "Configuration file copied to /etc/rclone-over-autossh/service.conf"
-
 # Create user if not exists
 if ! getent passwd shared >/dev/null 2>&1; then
-    useradd -r -s /sbin/nologin shared
+    useradd -r -s /sbin/nologin -g shared shared
     info "User 'shared' created"
 else
     info "User 'shared' already exists, skipping"
@@ -47,6 +37,10 @@ fi
 mkdir -p /etc/rclone-over-autossh
 mkdir -p /var/log/rclone-over-autossh
 info "Directories created"
+
+# Copy main configuration file
+cp ./etc/rclone-over-autossh.conf.template /etc/rclone-over-autossh/service.conf
+info "Configuration file copied to /etc/rclone-over-autossh/service.conf"
 
 # Generate SSH key if not exists
 if [ ! -f /etc/rclone-over-autossh/ssh_key ]; then
@@ -79,7 +73,7 @@ cat << EOF
 
 Next steps:
 1. View and edit /etc/rclone-over-autossh/service.conf to set your remote host and credentials.
-   sudo nano /etc/rclone-over-autossh/service.conf
+   nano /etc/rclone-over-autossh/service.conf
 
 2. View the public key (add to remote server authorized_keys):
    cat /etc/rclone-over-autossh/ssh_key.pub
