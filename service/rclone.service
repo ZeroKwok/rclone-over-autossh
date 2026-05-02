@@ -7,7 +7,7 @@ EnvironmentFile=/etc/rclone-over-autossh/service.conf
 
 # 基础命令配置
 ExecStart=/usr/bin/rclone serve sftp $RClonePath \
-  --addr $LocalAddress
+  --addr $LocalAddress \
   --user $RCloneUser \
   --pass $RClonePass \
   --dir-perms $RCloneDirPerms \
