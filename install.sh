@@ -39,8 +39,12 @@ mkdir -p /var/log/rclone-over-autossh
 info "Directories created"
 
 # Copy main configuration file
-cp ./etc/rclone-over-autossh.conf.template /etc/rclone-over-autossh/service.conf
-info "Configuration file copied to /etc/rclone-over-autossh/service.conf"
+if [ ! -f /etc/rclone-over-autossh/service.conf ]; then
+    cp ./etc/rclone-over-autossh.conf.template /etc/rclone-over-autossh/service.conf
+    info "Main configuration file copied"
+else
+    info "Main configuration file already exists, skipping"
+fi
 
 # Generate SSH key if not exists
 if [ ! -f /etc/rclone-over-autossh/ssh_key ]; then
