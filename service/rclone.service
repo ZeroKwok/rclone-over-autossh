@@ -26,8 +26,6 @@ Group=shared
 PrivateTmp=yes
 NoNewPrivileges=yes
 ProtectSystem=strict
-ProtectHome=yes
-ReadWritePaths=$RClonePath
 ReadWritePaths=/var/log/rclone-over-autossh
 
 # 日志输出

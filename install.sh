@@ -27,7 +27,7 @@ done
 
 # Create user if not exists
 if ! getent passwd shared >/dev/null 2>&1; then
-    useradd -r -s /sbin/nologin -g shared shared
+    useradd -r -m -s /usr/sbin/nologin -g shared shared
     info "User 'shared' created"
 else
     info "User 'shared' already exists, skipping"
