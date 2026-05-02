@@ -1,8 +1,6 @@
 LocalAddress=127.0.0.1:2026
 RemoteAddress=127.0.0.1:2026
 RemoteHostSpec=<user>@<host>
-User=shared
-Group=shared
 
 AUTOSSH_GATETIME=0
 AUTOSSH_POLL=10

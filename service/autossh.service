@@ -24,8 +24,8 @@ StartLimitInterval=0
 StartLimitBurst=0
 
 # 安全加固
-User=$User
-Group=$Group
+User=shared
+Group=shared
 PrivateTmp=yes
 NoNewPrivileges=yes
 ProtectSystem=strict
