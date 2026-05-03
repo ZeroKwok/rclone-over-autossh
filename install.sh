@@ -83,15 +83,11 @@ Next steps:
    cat /etc/rclone-over-autossh/ssh_key.pub
 
 3. Enable and start the service:
-   systemctl enable --now rclone.service
-   systemctl enable --now autossh.service
+   make enable
 
 4. Check service status:
-   systemctl status rclone.service
-   systemctl status autossh.service
+   make status
 
 5. View logs:
-   journalctl -u rclone.service -f
-   journalctl -u autossh.service -f
-
+   make logs
 EOF

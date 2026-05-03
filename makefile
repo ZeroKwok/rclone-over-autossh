@@ -5,6 +5,11 @@ install:
 	chmod +x install.sh
 	./install.sh
 
+enable:
+	@echo "Enabling services..."
+	systemctl enable rclone.service
+	systemctl enable autossh.service
+
 start:
 	@echo "Starting rclone-over-autossh..."
 	systemctl start rclone.service
