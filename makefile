@@ -20,12 +20,19 @@ restart:
 	systemctl restart rclone.service
 	systemctl restart autossh.service
 
+status:
+	@echo   "***************** Service Status ****************"
+	@echo "\n************** rclone.service logs **************"
+	systemctl status rclone.service --no-pager -l | head -20
+	@echo "\n************** autossh.service logs **************"
+	systemctl status autossh.service --no-pager -l | head -20
+
 logs:
-	@echo "=== Last 20 lines of logs ==="
-	@echo "\n--- rclone.service logs ---"
-	journalctl -u rclone.service -n 20 --no-pager
-	@echo "\n--- autossh.service logs ---"
-	journalctl -u autossh.service -n 20 --no-pager
+	@echo   "************* Last 20 lines of logs *************"
+	@echo "\n************** rclone.service logs **************"
+	journalctl -u rclone.service --no-pager -n 20
+	@echo "\n************** autossh.service logs **************"
+	journalctl -u autossh.service --no-pager -n 20
 
 uninstall:
 	@echo "Cleaning up..."
