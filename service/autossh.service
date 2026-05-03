@@ -1,9 +1,12 @@
 [Unit]
-Description=rclone-over-autossh tunnel service
+Description=rclone-over-autossh ssh tunnel service
 After=network.target
 
 [Service]
 EnvironmentFile=/etc/rclone-over-autossh/service.conf
+
+# 执行前打印环境变量
+#ExecStartPre=/usr/bin/env
 
 # 基础命令配置
 ExecStart=/usr/bin/autossh -M 0 \
@@ -11,11 +14,11 @@ ExecStart=/usr/bin/autossh -M 0 \
     -o "ServerAliveCountMax 3" \
     -o "ExitOnForwardFailure yes" \
     -o "StrictHostKeyChecking no" \
-    -o "UserKnownHosts /dev/null" \
+    -o "UserKnownHostsFile /dev/null" \
     -NT \
     -i /etc/rclone-over-autossh/ssh_key \
-    -R $RemoteAddress:$LocalAddress \
-    $RemoteHostSpec
+    -R ${RemoteAddress}:${LocalAddress} \
+    ${RemoteHostSpec}
 
 # 自动重启配置
 Restart=always
@@ -29,9 +32,9 @@ Group=shared
 PrivateTmp=yes
 NoNewPrivileges=yes
 ProtectSystem=strict
-ReadWritePaths=/var/log/rclone-over-autossh
 ReadOnlyPaths=/etc/ssh
 ReadOnlyPaths=/etc/rclone-over-autossh
+ReadWritePaths=/var/log/rclone-over-autossh
 
 # 日志输出
 StandardOutput=journal
