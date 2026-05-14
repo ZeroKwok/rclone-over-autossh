@@ -1,12 +1,12 @@
 [Unit]
-Description=rclone-over-autossh rclone sftp service
+Description=rclone-over-autossh rclone service
 After=network.target
 
 [Service]
 EnvironmentFile=/etc/rclone-over-autossh/service.conf
 
 # 基础命令配置
-ExecStart=/usr/bin/rclone serve sftp /shared \
+ExecStart=/usr/bin/rclone serve $RCloneServe /shared \
   --addr $RCloneAddress \
   --user $RCloneUser \
   --pass $RClonePass \

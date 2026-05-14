@@ -7,6 +7,7 @@ AutoSSHLocalAddress=127.0.0.1:2026
 AutoSSHRemoteAddress=127.0.0.1:2026
 AutoSSHRemoteHostSpec=<user>@<host>
 
+RCloneServe=webdav
 RCloneUser=shared
 RClonePass=1
 RCloneDirPerms=0755
