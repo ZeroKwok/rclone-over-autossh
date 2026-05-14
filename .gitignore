@@ -1,2 +1,4 @@
 # EnvironmentFile
 etc/rclone-over-autossh.conf
+etc/*.back
+scripts.sh
