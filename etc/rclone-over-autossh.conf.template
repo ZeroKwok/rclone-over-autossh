@@ -1,14 +1,14 @@
-LocalAddress=127.0.0.1:2026
-RemoteAddress=127.0.0.1:2026
-RemoteHostSpec=<user>@<host>
-
 AUTOSSH_GATETIME=0
 AUTOSSH_POLL=10
 AUTOSSH_FIRST_POLL=30
 AUTOSSH_LOGLEVEL=1
 
+AutoSSHLocalAddress=127.0.0.1:2026
+AutoSSHRemoteAddress=127.0.0.1:2026
+AutoSSHRemoteHostSpec=<user>@<host>
+
 RCloneUser=shared
-RClonePass=<password>
-RClonePath=/shared
+RClonePass=1
 RCloneDirPerms=0755
 RCloneFilePerms=0644
+RCloneAddress=127.0.0.1:2026

@@ -17,8 +17,8 @@ ExecStart=/usr/bin/autossh -M 0 \
     -o "UserKnownHostsFile /dev/null" \
     -NT \
     -i /etc/rclone-over-autossh/ssh_key \
-    -R ${RemoteAddress}:${LocalAddress} \
-    ${RemoteHostSpec}
+    -R ${AutoSSHRemoteAddress}:${AutoSSHLocalAddress} \
+    ${AutoSSHRemoteHostSpec}
 
 # 自动重启配置
 Restart=always
