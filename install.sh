@@ -64,7 +64,7 @@ else
 fi
 
 # Set proper ownership and permissions
-chown -R shared:shared /etc/rclone-over-autossh /var/log/rclone-over-autossh /tmp/rclone-over-autossh
+chown -R shared:shared /etc/rclone-over-autossh /tmp/rclone-over-autossh
 chmod 700 /etc/rclone-over-autossh
 chmod 755 /var/log/rclone-over-autossh
 info "Permissions configured"
