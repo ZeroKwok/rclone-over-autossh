@@ -12,7 +12,6 @@ ExecStart=/usr/bin/rclone serve sftp /shared \
   --pass $RClonePass \
   --dir-perms $RCloneDirPerms \
   --file-perms $RCloneFilePerms \
-  --cache-dir $RCloneCacheDir \
   --filter-from $RCloneFilterFrom \
   --vfs-cache-mode off 
 

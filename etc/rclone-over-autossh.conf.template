@@ -13,4 +13,3 @@ RCloneDirPerms=0755
 RCloneFilePerms=0644
 RCloneAddress=127.0.0.1:2026
 RCloneFilterFrom=/etc/rclone-over-autossh/filter.txt
-RCloneCacheDir=/tmp/rclone-over-autossh
