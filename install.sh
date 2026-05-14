@@ -36,11 +36,19 @@ fi
 # Create required directories
 mkdir -p /etc/rclone-over-autossh
 mkdir -p /var/log/rclone-over-autossh
+mkdir -p /tmp/rclone-over-autossh
 info "Directories created"
 
 # Copy main configuration file
 if [ ! -f /etc/rclone-over-autossh/service.conf ]; then
     cp ./etc/rclone-over-autossh.conf.template /etc/rclone-over-autossh/service.conf
+    info "Main configuration file copied"
+else
+    info "Main configuration file already exists, skipping"
+fi
+
+if [ ! -f /etc/rclone-over-autossh/filter.txt ]; then
+    cp ./etc/filter.txt /etc/rclone-over-autossh/filter.txt
     info "Main configuration file copied"
 else
     info "Main configuration file already exists, skipping"
@@ -56,7 +64,7 @@ else
 fi
 
 # Set proper ownership and permissions
-chown -R shared:shared /etc/rclone-over-autossh /var/log/rclone-over-autossh
+chown -R shared:shared /etc/rclone-over-autossh /var/log/rclone-over-autossh /tmp/rclone-over-autossh
 chmod 700 /etc/rclone-over-autossh
 chmod 755 /var/log/rclone-over-autossh
 info "Permissions configured"
